@@ -1,0 +1,16 @@
+-- Join multiple tables using "USING" clause
+
+USE sql_invoicing
+
+SELECT 
+    p.date,
+    c.name AS client,
+    pm.name AS payment_method,
+    p.amount
+FROM
+    payments p
+JOIN
+    clients c USING (client_id)
+JOIN
+    payment_methods pm 
+    ON p.payment_method = pm.payment_method_id
